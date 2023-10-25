@@ -1,0 +1,33 @@
+﻿<div class="accordion accordion-flush" id="accordionFlush">
+    @foreach (var item in Items)
+    {
+        <h2 class="accordian-header">
+            <button class="accordian-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-@index">
+                @item.Title
+            </button>
+        </h2>
+        <div id="#flush-collapse-@index" class="accordian-collaps collapse" data-bs-parent="#accordionFlush">
+            <div class="accordion-body">@item.Content</div>
+        </div>
+    }
+    index++;
+</div>
+
+@code {
+    private int index = 0;
+
+    public Accordian00(AccordianItem[] items)
+    {
+        Items = items;
+    }
+
+    public class AccordianItem
+    {
+        public string Title { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
+    }
+
+    [Parameter]
+    public AccordianItem[] Items { get; set; }
+
+}
